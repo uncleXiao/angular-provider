@@ -1,0 +1,8 @@
+{
+  "name": "angularCode",
+  "version": "1.0.1",
+  "description": "learning angular source code",
+  "scripts": {
+    "start": "node web-server.js"
+  }
+}

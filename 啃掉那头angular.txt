@@ -1,0 +1,35 @@
+Start: 王菲也来吐槽了：只是因为在邮件中看到这一句，再也不能愉快过周末~~
+
+(为了防止各位看到巨长的滑动条有心理压力，我把内容都折叠起来了，下面开讲！)
+
+一、往期剧情回顾（热个身，尽快进入状态）
+炒一下冷饭，再翻翻以前反复提到过的概念（单例、依赖注入、双向绑定之类……）
+
+二、如何迈出第一步（强化HTML这件装备，怎么做到的？） 注入document和window
+if (window.angular.bootstrap) {
+    //AngularJS is already loaded, so we can return here...
+    console.log('WARNING: Tried to load angular more than once.');
+    return;
+  }
+
+  //try to bind to jquery now so that one can write jqLite(document).ready()
+  //but we will rebind on bootstrap again.
+  bindJQuery();
+
+  publishExternalAPI(angular);
+
+  jqLite(document).ready(function() {
+    angularInit(document, bootstrap);
+  });
+//介绍IIFE的概念
+//继而玩一下js的反人类设计 ：闭包
+
+三、介绍IIFE和闭包概念（工欲善其事，必先利其器）
+
+四、循规蹈矩，开始啃啊！
+
+五、番外，补充i18n和Q
+
+
+End:优雅！ --> 啥？怎么会这么烂！ --> 好吧，其实还是挺不错的 --> 简直不能相信这个团队脑子想什么，你在逗我？-->
+酷毙了！ --> 我们做了个恐怖的决定，它导致我们这项目垮掉了！垮掉了！--> 噢天啦，这太棒了！--> 再次改观 -->尼玛，简直吊炸天，膜拜！

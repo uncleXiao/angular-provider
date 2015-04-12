@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Promise简单例子：如何认识一个女孩</title>
+    <script src="../q/q.js"></script>
+    <script src="../bootstrap-3.3/jquery-1.11.1.min.js"></script>
+    <script>
+        /**
+         * 第一步，打个招呼；
+         * 第二步，开个简单话题
+         * 第三步，继续引导对话内容
+         * 第四步，表示愉快，保持联系
+         */
+
+        /*===========
+         前提：任何一次请求都可能被妹子拒绝（reject）！
+         前提：步骤最好一步跟着一步，欲速则不达！
+         ===========*/
+
+
+        /***********************************************************************************************/
+         // 回顾，开门见山
+ /*       function demo() {
+            //鲁迅《阿Q正传》式表白：吴妈，我想和你睡觉！
+            $.ajax({
+                url: 'step10.json',
+                success: function (data) {
+                    console.info('耶 -- '+data.step);
+                },
+                error:function(){
+                    console.error('滚！臭流氓！');
+                }
+            });
+        }
+
+        console.log('鲁迅《阿Q正传》式表白');
+        demo();*/
+        /***********************************************************************************************/
+
+
+
+        /***********************************************************************************************/
+        //悠着点！看看我们的Q怎么做的吧
+        function one() {
+            var deferred = Q.defer(); // 先别急着暴露本性，要做好心理准备
+            console.log("第一步");
+            $.ajax({
+                url: 'step1.json',
+                success: function (data) {
+                    console.info(data.msg);
+                    deferred.resolve();//妹子并不反感，你得好好表现了喔！
+                },
+                error:function(){
+                    console.error('你是一个好人');
+                    deferred.reject();//第一步就失败，你吖真是个杯具
+                }
+            });
+            return deferred.promise;
+        }
+
+        function two() {
+            var deferred = Q.defer();
+            console.log("第二步");
+            $.ajax({
+                url: 'step2.json',
+                success: function (data) {
+                    console.info(data.msg);
+                    deferred.resolve();//她表示愿意跟你聊天，继续努力！
+                },
+                error:function(){
+                    console.error('你是一个好人');
+                    deferred.reject();
+                }
+            });
+            return deferred.promise;
+        }
+
+        function three() {
+            var deferred = Q.defer();
+            console.log("第三步");
+            $.ajax({
+                url: 'step3.json',
+                success: function (data) {
+                    console.info(data.msg);
+                    deferred.resolve();//不错哟，她对你建立起初步的信任！
+                },
+                error:function(){
+                    console.error('你是一个好人');
+                    deferred.reject();
+                }
+            });
+            return deferred.promise;
+        }
+
+        function four() {
+            var deferred = Q.defer();
+            console.log("第四步");
+            $.ajax({
+                url: 'step4.json',
+                success: function (data) {
+                    console.info(data.msg);
+                    deferred.resolve();//恭喜，你们算是正式认识了！但是别得瑟，以后的路还长着呢！
+                },
+                error:function(){
+                    console.error('你是一个好人');
+                    deferred.reject();
+                }
+            });
+            return deferred.promise;
+        }
+
+
+        function sorry(){
+            //屌丝！被发好人卡了吧？
+            console.error("难道我就这样过我的一生，我的吻注定吻不到最爱的人 -- by张信哲");
+        }
+
+        function yeah(){
+            console.debug("哈哈，升职，加薪，迎娶白富美，攀上人生巅峰！想想还有点小激动呢~~");
+        }
+
+
+        console.log('promise模式追妹子');
+        one().then(two).then(three).then(four).catch(sorry).done(yeah);//链式请求
+        console.log('静观其变... ...');
+
+        /***********************************************************************************************/
+
+
+    </script>
+</head>
+<body>
+不必多说，按F12吧
+</body>
+</html>

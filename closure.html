@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js闭包</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+</body>
+
+<script>
+    //闭包展示
+    var nodes = document.getElementsByTagName('button');
+    for (var i = 0; i < nodes.length; i++) {
+        nodes[i].addEventListener('click', function () {
+            console.log('You clicked element #' + i);//WebStorm会提示你: mutable variable is accessible closure!
+            //mutable adj. 易变的，不定的，性情不定的 都说妹子心，海底针呀~~
+        });
+    }
+
+</script>
+
+<script>
+    //创建闭包之前，必须知道两个东西 ： First-class Citizens 和 Inner Functions
+    //详见http://www.sitepoint.com/javascript-closures-demystified/
+    function add(value1) {
+        return function doAdd(value2) {
+            console.log("value1 = "+ value1);
+            return value1 + value2;
+        };
+    }
+
+    var increment = add(1);
+    var foo = increment(2);
+    console.log("foo = " + foo); // foo = 3
+
+    /**
+     * 别这段小小的代码，它做了很多很多事情：
+     * 1、add返回了它的内置函数，闭包就被创建啦；
+     * 2、value1是add函数的本地变量，而value2是非本地变量。 神奇的事情来了，value2也不是外部变量
+     * 这让我想到了僵尸：集天地怨气晦气而生，不老不死不灭，被天地人三界摒弃在众生六道之外，浪荡无疑流离失所！！
+     *
+     */
+
+/*    var bar = increment(3);
+    console.log("bar = " + bar); // bar = 4*/
+
+
+
+</script>
+</html>
