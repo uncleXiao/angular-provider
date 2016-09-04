@@ -4,7 +4,7 @@
 
 ![Angular学习曲线](img/useNG.jpeg)
 
-点击[这里](http://unclexiao.github.io/angular-provider/)开启啃食这只[Angular](https://angularjs.org/)独角兽吧！
+点击[这里](http://unclexiao.github.io/angular-provider/index.html)开启啃食这只[Angular](https://angularjs.org/)独角兽吧！
 
 还记得它的特性？
 * MVC模式
